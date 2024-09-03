@@ -59,7 +59,7 @@ public class Main {
 }
 ```
 
-### **Abstaction**
+### **Abstraction**
 
 Abtraction atau abstraksi adalah suatu konsep dimana kita akan menyembunyikan implemmentasi yang tidak penting bagi pengguna dan hanya menunjukkan fungsionalitas yang penting saja bagi pengguna. Hal ini bertujuan agar pengguna hanya perlu tahu apa yang bisa dilakukan suatu Object tanpa perlu tahu bagaimana kompleksitas yang dilakukan oleh Object tersebut. Sebagai contoh, ada suatu object segitiga yang memiliki fungsi `tampilkanLuas`. Pengguna hanya perlu menggunakan fungsi tersebut, tanpa tahu bagaimana cara mendapatkan luas dari segitiga tersebut.
 
