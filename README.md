@@ -172,7 +172,7 @@ public class Main {
 
 **Private**
 
-Private adalah tingkat keamanan paling tinggi. Tingkat keamanan ini hanya memperbolehkan atribut dan perilaku (method) dari suatu Class, hanya bisa diakses dari Class itu saja. Khusus untuk atribut, agar kita bisa set nilai dan mendapatkan nilainya, kita harus membuat fungsi getter (mendapatkan nilai atribut class dari luar class) dan setter (set nilai atribut dari luar class) yang akan di set menjadi public.
+Private adalah tingkat keamanan paling tinggi. Tingkat keamanan ini hanya memperbolehkan atribut dan perilaku (method) dari suatu Class, hanya bisa diakses dari Class itu saja. Khusus untuk atribut, agar kita bisa set nilai dan mendapatkan nilainya, kita harus membuat fungsi `getter` (mendapatkan nilai atribut class dari luar class) dan `setter` (set nilai atribut dari luar class) yang akan di set menjadi public.
 
 ![Private](resources/private.png)
 
@@ -217,8 +217,8 @@ public class Main {
     Segitiga segitiga = new Segitiga();
     segitiga.setAlas(10);
     segitiga.setTinggi(5);
-    System.out.println("Alas: " + segitiga.getAlas);
-    System.out.println("Tinggi: " + segitiga.getTinggi);
+    System.out.println("Alas: " + segitiga.getAlas());
+    System.out.println("Tinggi: " + segitiga.getTinggi());
     segitiga.tampilkanLuas();// Menampilkan hasil perhitungan luas segitiga (25)   
     segitiga.alas = 10; // Tidak boleh/Error     
     segitiga.tinggi = 5; // Tidak boleh/Error
@@ -239,3 +239,58 @@ public void setAlas(int alas) {
 ```
 
 `this.alas` disini mengacu pada atribut alas dari Object yang sedang dieksekusi, dan `alas` yang tidak menggunakan `this` merupakan variable `alas` dari parameter fungsi. Alur dari kode atas sendiri adalah kita akan set nilai variable `alas` dari Object (`this.alas`) dengan nilai dari variable `alas` yang dikirimkan kedalam parameter fungsi. 
+
+Selain menggunakan setter, kita juga bisa memanfaatkan perilaku (method) konstruktor untuk set nilai dari atribut yang bersifat `Private`. Konstruktor sendiri ialah perilaku (method) yang wajib atau otomatis terpanggil saat suatu Object atau Instance dibuat. Konstruktor bisa diberi parameter dan juga bisa tidak. Untuk mengirim argument ke fungsi konstruktor, kita bisa memberi argument saat kita menginisiasi object baru.
+
+```java
+// Segitiga.java
+public class Segitiga {
+  private int alas;
+  private int tinggi;
+
+  // Konstruktor untuk set alas dan tinggi
+  public Segitiga(int alas, int tinggi) {
+    this.alas = alas;
+    this.tinggi = tinggi;
+    System.out.println("Ini Konstruktor untuk set alas dan tinggi");
+  }
+
+  private double hitungLuas() {
+    return (alas * tinggi) / 2;
+  }
+  
+  public void tampilkanLuas() {
+    System.out.println("Luas: " + hitungLuas());
+  }
+  
+  // Getter untuk alas
+  public int getAlas() {
+    return alas;
+  }
+
+  // Setter untuk alas
+  public void setAlas(int alas) {
+    this.alas = alas;
+  }
+
+  // Getter untuk tinggi
+  public int getTinggi() {
+    return tinggi;
+  }
+
+  // Setter untuk tinggi
+  public void setTinggi(int tinggi) {
+    this.tinggi = tinggi;
+  }
+}
+
+// Main.java
+public class Main {
+  public static void main(String[] args) {
+    Segitiga segitiga = new Segitiga(10, 5);   
+    System.out.println("Alas: " + segitiga.getAlas());
+    System.out.println("Tinggi: " + segitiga.getTinggi());
+    segitiga.tampilkanLuas();
+  }
+}
+```
